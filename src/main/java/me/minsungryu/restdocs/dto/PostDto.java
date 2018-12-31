@@ -10,6 +10,8 @@ import lombok.Setter;
 @Setter
 public class PostDto implements Serializable {
 
+	private Long id;
+
 	private String title;
 
 	private String content;

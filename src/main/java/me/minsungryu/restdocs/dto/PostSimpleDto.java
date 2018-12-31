@@ -6,9 +6,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CommentDto implements Serializable {
+public class PostSimpleDto implements Serializable {
 
 	private Long id;
+
+	private String title;
 
 	private String content;
 
