@@ -16,6 +16,7 @@ plugins {
     id "org.springframework.boot" version "2.1.1.RELEASE"
     id 'io.spring.dependency-management' version "1.0.6.RELEASE"
     id 'net.ltgt.apt' version '0.9'
+    id "org.asciidoctor.convert" version "1.5.9.2"
 }
 
 sourceSets {
@@ -28,6 +29,17 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
+}
+
+asciidoctor {
+    dependsOn test
+}
+
+bootJar {
+    dependsOn asciidoctor
+    from ("${asciidoctor.outputDir}/html5") {
+        into 'static/docs'
+    }
 }
 
 dependencies {
