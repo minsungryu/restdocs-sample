@@ -1,0 +1,67 @@
+= RestDocs sample
+RestDocs 사용 예제
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[post]]
+== Post
+포스트 API
+
+
+
+[[post-find-all]]
+=== findAll
+Post 목록 조회
+
+
+[[request-post-find-all]]
+==== Request
+.curl
+include::{snippets}/post-find-controller-test/find-all/curl-request.adoc[]
+
+.header
+include::{snippets}/post-find-controller-test/find-all/http-request.adoc[]
+
+
+[[response-post-find-all]]
+==== Response
+
+.body
+include::{snippets}/post-find-controller-test/find-all/response-body.adoc[]
+
+.fields
+include::{snippets}/post-find-controller-test/find-all/response-fields.adoc[]
+
+
+
+
+[[post-find-by-id]]
+=== findById
+Post 단건 조회
+
+
+[[request-post-find-by-id]]
+==== Request
+
+.curl
+include::{snippets}/post-find-controller-test/find-by-id/curl-request.adoc[]
+
+.header
+include::{snippets}/post-find-controller-test/find-by-id/http-request.adoc[]
+
+.path parameters
+include::{snippets}/post-find-controller-test/find-by-id/path-parameters.adoc[]
+
+
+[[response-post-find-by-id]]
+==== Response
+
+.body
+include::{snippets}/post-find-controller-test/find-by-id/response-body.adoc[]
+
+.fields
+include::{snippets}/post-find-controller-test/find-by-id/response-fields.adoc[]
