@@ -36,7 +36,7 @@ public class PostFindServiceTest {
 		List<Post> posts = Arrays.asList(new Post(), new Post());
 		List<PostSimpleDto> postSimpleDtos = Arrays.asList(new PostSimpleDto(), new PostSimpleDto());
 		given(postRepository.findAll()).willReturn(posts);
-		given(postMapper.simpleMapAsList(posts)).willReturn(postSimpleDtos);
+		given(postMapper.mapAsSimpleList(posts)).willReturn(postSimpleDtos);
 
 		// when
 		List<PostSimpleDto> result = postFindService.findAll();

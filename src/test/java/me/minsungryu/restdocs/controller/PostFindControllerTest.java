@@ -7,31 +7,21 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.response
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import me.minsungryu.restdocs.common.RestControllerTest;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
-@AutoConfigureRestDocs
-public class PostFindControllerTest {
 
-	@Autowired
-	private MockMvc mockMvc;
+public class PostFindControllerTest extends RestControllerTest {
 
 	@Test
 	public void findAll() throws Exception {
-		mockMvc.perform(get("/posts").accept(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get("/posts").accept(MediaType.APPLICATION_JSON_UTF8))
 			.andDo(print())
 			.andDo(
 				document("{class-name}/{method-name}",
@@ -42,13 +32,18 @@ public class PostFindControllerTest {
 					)
 				)
 			)
-			.andExpect(status().isOk());
+			.andExpect(status().isOk())
+			.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+			.andExpect(jsonPath("$..id").exists())
+			.andExpect(jsonPath("$..title").exists())
+			.andExpect(jsonPath("$..content").exists())
+		;
 	}
 
 	@Test
 	public void findById() throws Exception {
 		Long postId = 1L;
-		mockMvc.perform(get("/posts/{id}", postId).accept(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get("/posts/{id}", postId).accept(MediaType.APPLICATION_JSON_UTF8))
 			.andDo(print())
 			.andDo(
 				document("{class-name}/{method-name}",
@@ -65,7 +60,13 @@ public class PostFindControllerTest {
 					)
 				)
 			)
-			.andExpect(status().isOk());
+			.andExpect(status().isOk())
+			.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+			.andExpect(jsonPath("id").exists())
+			.andExpect(jsonPath("title").exists())
+			.andExpect(jsonPath("content").exists())
+			.andExpect(jsonPath("comments").exists())
+		;
 	}
 
 }

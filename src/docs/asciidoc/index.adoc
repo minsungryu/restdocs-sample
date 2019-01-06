@@ -20,10 +20,6 @@ Post 목록 조회
 
 [[request-post-find-all]]
 ==== Request
-.curl
-include::{snippets}/post-find-controller-test/find-all/curl-request.adoc[]
-
-.header
 include::{snippets}/post-find-controller-test/find-all/http-request.adoc[]
 
 
@@ -46,11 +42,6 @@ Post 단건 조회
 
 [[request-post-find-by-id]]
 ==== Request
-
-.curl
-include::{snippets}/post-find-controller-test/find-by-id/curl-request.adoc[]
-
-.header
 include::{snippets}/post-find-controller-test/find-by-id/http-request.adoc[]
 
 .path parameters
@@ -65,3 +56,29 @@ include::{snippets}/post-find-controller-test/find-by-id/response-body.adoc[]
 
 .fields
 include::{snippets}/post-find-controller-test/find-by-id/response-fields.adoc[]
+
+
+
+
+[[post-save]]
+=== save
+Post 저장
+
+
+[[request-post-save]]
+==== Request
+include::{snippets}/post-save-controller-test/save/http-request.adoc[]
+
+.body
+include::{snippets}/post-save-controller-test/save/request-body.adoc[]
+
+.fields
+include::{snippets}/post-save-controller-test/save/request-fields.adoc[]
+
+
+[[response-post-save]]
+==== Response
+include::{snippets}/post-save-controller-test/save/http-response.adoc[]
+
+.headers
+include::{snippets}/post-save-controller-test/save/response-headers.adoc[]
